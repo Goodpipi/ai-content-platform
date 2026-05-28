@@ -62,6 +62,8 @@ import {
   getHomeInputGuidance,
   HOME_IMAGE_TEMPLATES,
   HOME_PPT_TEMPLATES,
+  isPptEntryIntent,
+  shouldPreferVisualFlow,
   type HomeEntryContext,
   type HomeEntryIntent,
 } from '@/app/components/homeGuide';
@@ -804,6 +806,12 @@ export default function App() {
     setSelectedPrompt('');
     if (visualWizard?.active && handleVisualWizardReply(text)) return;
     if (pptWizard?.active && handlePptWizardReply(text, inputValue.trim())) return;
+    if (shouldPreferVisualFlow(entryContext, text)) {
+      const templateHint =
+        entryContext?.intent === 'visual-template' ? entryContext.templateTitle : undefined;
+      startVisualFlow(text, { skipUserMsg: true, templateHint });
+      return;
+    }
     dispatchUserIntent(text, true);
   };
 
@@ -1462,8 +1470,13 @@ export default function App() {
         return;
       }
     }
-    const inPptEntry =
-      entryContext?.intent === 'ppt' || entryContext?.intent === 'ppt-template';
+    if (shouldPreferVisualFlow(entryContext, text)) {
+      const templateHint =
+        entryContext?.intent === 'visual-template' ? entryContext.templateTitle : undefined;
+      startVisualFlow(text, { skipUserMsg: true, templateHint });
+      return;
+    }
+    const inPptEntry = isPptEntryIntent(entryContext);
     const parsedAud = parseAudience(text);
     const parsedScen = parseScenario(text);
     if (
@@ -1472,10 +1485,6 @@ export default function App() {
       text.trim().length <= 24 &&
       !text.includes('生成文案')
     ) {
-      startPptFlow(text, { skipUserMsg: true });
-      return;
-    }
-    if (parsedScen && !parsedAud && text.trim().length <= 24) {
       startPptFlow(text, { skipUserMsg: true });
       return;
     }
