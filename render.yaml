@@ -1,0 +1,16 @@
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: ai-content-platform
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FALLBACK_MOCK
+        value: "1"
+      - key: DEEPSEEK_API_KEY
+        sync: false
