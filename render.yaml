@@ -4,12 +4,11 @@ services:
     name: ai-content-platform
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: node server/index.js
+    # NODE_ENV=production 时 npm 会跳过 devDependencies，vite 装不上；构建需包含 dev 依赖
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: NODE_ENV=production node server/index.js
     healthCheckPath: /api/health
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: FALLBACK_MOCK
         value: "1"
       - key: DEEPSEEK_API_KEY
