@@ -13,6 +13,27 @@ export interface HomeEntryContext {
   templateTitle?: string;
 }
 
+export function isPptEntryIntent(ctx?: HomeEntryContext | null): boolean {
+  return ctx?.intent === 'ppt' || ctx?.intent === 'ppt-template';
+}
+
+export function isVisualEntryIntent(ctx?: HomeEntryContext | null): boolean {
+  return ctx?.intent === 'visual' || ctx?.intent === 'visual-template';
+}
+
+/** 从首页图片入口进入时，短句应走配图流程而非 PPT 大纲 */
+export function shouldPreferVisualFlow(
+  ctx: HomeEntryContext | null | undefined,
+  text: string
+): boolean {
+  if (!isVisualEntryIntent(ctx)) return false;
+  if (/ppt|幻灯片|演示文稿|课件/i.test(text)) return false;
+  if ((text.includes('话题') && text.includes('洞察')) || /生成文案|视频脚本|生成视频/.test(text)) {
+    return false;
+  }
+  return true;
+}
+
 const INTENT_LABELS: Record<Exclude<HomeEntryIntent, 'visual-template' | 'ppt-template'>, string> = {
   general: '内容创作',
   insight: '话题洞察',
