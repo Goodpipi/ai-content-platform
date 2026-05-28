@@ -1,0 +1,424 @@
+/**
+ * 视觉精修层：更克制的圆角、字重与阴影，覆盖 theme.css 中的原型默认值
+ */
+
+/* —— 设计令牌（拜耳区） —— */
+:root {
+  --r: 12px;
+  --r-md: 14px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --shadow: 0 1px 2px rgba(16, 60, 143, 0.04), 0 4px 16px rgba(16, 60, 143, 0.06);
+  --shadow-md: 0 4px 20px rgba(16, 60, 143, 0.08);
+  --shadow-lg: 0 12px 40px rgba(16, 60, 143, 0.1);
+  --line: #e8eef4;
+  --muted: #64748b;
+}
+
+/* —— 全局排版 —— */
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, .panel-title, .section-title, .home-section-title {
+  letter-spacing: -0.02em;
+}
+
+/* —— 顶栏 —— */
+.top {
+  height: 56px;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+}
+
+.brand h1 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.brand p {
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+.logo {
+  width: 34px;
+  height: 34px;
+  box-shadow: 0 4px 12px rgba(16, 60, 143, 0.12);
+}
+
+.pill {
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 500;
+  gap: 6px;
+}
+
+/* —— 卡片 / 面板 —— */
+.card,
+.panel,
+.wpanel,
+.stat,
+.task-row,
+.mat-card,
+.detail-card,
+.material-group,
+.default-group,
+.bubble,
+.compose-line,
+.upload-box,
+.video-version-card,
+.reviewer-visual-card,
+.ppt-slide-card,
+.ops-image-review-item {
+  border-radius: var(--r-md);
+}
+
+.panel {
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+}
+
+.wpanel {
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+}
+
+.card {
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+}
+
+.stat {
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+
+.stat .num,
+.num,
+.lib-side-stat-num {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* —— 首页 Hero —— */
+.hero h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.hero-card {
+  padding: 22px 24px;
+}
+
+.home-section-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.page {
+  padding: 20px 24px;
+}
+
+/* —— 任务 / 素材 —— */
+.panel-head {
+  padding: 12px 16px;
+}
+
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.task-row {
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.task-row:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-0.5px);
+}
+
+.input,
+.select {
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-color: #dce5ee;
+}
+
+.input:focus,
+.select:focus,
+textarea:focus {
+  border-color: #94b8e8;
+  box-shadow: 0 0 0 3px rgba(29, 107, 255, 0.12);
+}
+
+/* —— 标签 / 徽章 —— */
+.badge,
+.cat-tab,
+.tab,
+.chip {
+  font-weight: 500;
+}
+
+/* —— 工作台 / 对话 —— */
+.workspace {
+  gap: 12px;
+  padding: 12px;
+}
+
+.project-card {
+  border-radius: var(--r-md);
+  padding: 12px;
+  margin: 12px;
+}
+
+.project-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bubble {
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  box-shadow: var(--shadow);
+}
+
+.msg.user .bubble {
+  padding: 7px 11px;
+  line-height: 1.45;
+}
+
+.compose-line {
+  border-radius: var(--r-md);
+  padding: 6px 8px;
+}
+
+
+.model-select {
+  border-radius: 10px;
+  padding: 7px 8px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+textarea {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.detail-card h4,
+.mat-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mat-card {
+  border-radius: var(--r-md);
+  padding: 14px;
+}
+
+.mat-card h4 {
+  font-weight: 600;
+}
+
+.template-card-label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.template-card-img {
+  border-radius: 8px;
+  height: 68px;
+}
+
+/* —— 弹层 / 抽屉 —— */
+.drawer {
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+  inset: 64px 16px 16px;
+}
+
+.drawer.reviewer-editor-drawer.open {
+  border-radius: var(--r-lg);
+  inset: 10px;
+}
+
+.canvas-large {
+  border-radius: var(--r-lg);
+}
+
+.modal-card,
+.confirm-modal {
+  border-radius: var(--r-lg);
+}
+
+/* —— 字重统一（去掉过粗数值） —— */
+.badge,
+.cat-tab.active,
+.tab.active,
+.ppt-outline-ch-num,
+.model-select,
+.template-card-label,
+.panel-title,
+.section-title,
+.home-section-title,
+.hero h2,
+.stat .num,
+.num {
+  font-weight: 600;
+}
+
+.chip,
+.muted,
+.small,
+.model-note {
+  font-weight: 400;
+}
+
+.poster-mini:before,
+.poster-mini:after {
+  font-weight: 600;
+}
+
+.poster-mini:after {
+  font-size: 20px;
+}
+
+/* —— 右侧产物区 —— */
+.option {
+  border-radius: 10px;
+  padding: 9px 10px;
+}
+
+.copy-preview {
+  border-radius: var(--r-md);
+  padding: 11px 12px;
+}
+
+.poster-mini {
+  border-radius: var(--r-md);
+  height: 220px;
+}
+
+.toast {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* —— 审核 / 角色切换 —— */
+.role-switcher {
+  gap: 6px;
+}
+
+.role-switcher-label {
+  font-size: 12px;
+}
+
+.role-switcher-select {
+  min-width: 140px;
+  font-size: 13px;
+}
+
+.reviewer-home {
+  max-width: 680px;
+}
+
+.review-task-card,
+.review-task-banner {
+  border-radius: var(--r-md);
+}
+
+.review-task-card {
+  padding: 14px 16px;
+}
+
+.library-page {
+  height: calc(100vh - 56px);
+  padding: 16px 20px;
+}
+
+.img-review-badge {
+  font-weight: 500;
+  font-size: 10px;
+  padding: 3px 9px;
+}
+
+.copy-revision-diff {
+  font-size: 13px;
+  line-height: 1.65;
+  border-radius: 10px;
+}
+
+/* —— 弹窗 —— */
+.modal-bg {
+  background: rgba(16, 34, 56, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+.modal,
+.image-template-modal {
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal {
+  padding: 16px 18px;
+}
+
+.modal h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ppt-outline-overlay {
+  inset: 56px 0 0 0;
+}
+
+/* —— 会话侧栏 —— */
+.session-item,
+.session-row,
+.context .session-btn {
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 500;
+}

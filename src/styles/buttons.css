@@ -1,0 +1,451 @@
+/**
+ * 全站按钮精修：更小、更轻、对齐一致
+ */
+:root {
+  --btn-h: 30px;
+  --btn-h-sm: 26px;
+  --btn-h-lg: 34px;
+  --btn-px: 12px;
+  --btn-px-sm: 10px;
+  --btn-radius: 8px;
+  --btn-radius-pill: 999px;
+  --btn-font: 12px;
+  --btn-font-sm: 11px;
+  --btn-shadow: 0 1px 2px rgba(16, 60, 143, 0.05);
+  --btn-shadow-hover: 0 2px 6px rgba(16, 60, 143, 0.08);
+}
+
+/* —— 主按钮 .btn —— */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: var(--btn-h);
+  padding: 0 var(--btn-px);
+  font-size: var(--btn-font);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  border-radius: var(--btn-radius);
+  border: 1px solid #d8e3ee;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-shadow: var(--btn-shadow);
+  transition:
+    background 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease,
+    box-shadow 0.12s ease,
+    transform 0.1s ease;
+}
+
+.btn:hover {
+  transform: none;
+  background: #f8fafc;
+  border-color: #b8c9dc;
+  color: #1e293b;
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid rgba(29, 107, 255, 0.35);
+  outline-offset: 1px;
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.42;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn.primary {
+  background: var(--blue);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(16, 60, 143, 0.22);
+}
+
+.btn.primary:hover {
+  background: #0d3478;
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn.green {
+  background: var(--green2);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 120, 100, 0.2);
+}
+
+.btn.green:hover {
+  background: #00967d;
+  color: #fff;
+}
+
+.btn.soft {
+  background: #f0f7ff;
+  border-color: #d4e5f7;
+  color: #1a4f8c;
+}
+
+.btn.soft:hover {
+  background: #e6f1fc;
+  border-color: #b8d4f0;
+}
+
+.btn.warn {
+  background: #fffbf0;
+  border-color: #f0e0b8;
+  color: #8a5a00;
+}
+
+.btn.warn:hover {
+  background: #fff6e0;
+}
+
+.btn-danger,
+.btn.btn-danger {
+  background: #c62839 !important;
+  border-color: #b71c2e !important;
+  color: #fff !important;
+  box-shadow: 0 1px 2px rgba(183, 44, 62, 0.25);
+}
+
+.btn-danger:hover {
+  background: #ad2333 !important;
+}
+
+/* 顶栏等紧凑场景 */
+.top .btn,
+.actions .btn {
+  min-height: var(--btn-h-sm);
+  padding: 0 11px;
+  font-size: var(--btn-font-sm);
+}
+
+/* —— 胶囊 / 标签式按钮 —— */
+.chip,
+.tab,
+.cat-tab,
+.guide-btn,
+.pill.btn {
+  min-height: var(--btn-h-sm);
+  padding: 0 10px;
+  font-size: var(--btn-font-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: var(--btn-radius-pill);
+  box-shadow: none;
+}
+
+.chip {
+  border: 1px solid #d4e5f2;
+  background: #f7fbff;
+  color: #1a4f8c;
+}
+
+.chip:hover {
+  background: #edf5ff;
+  border-color: #b8d4f0;
+  transform: none;
+}
+
+.tab,
+.cat-tab {
+  border: 1px solid #dce5ee;
+  background: #fff;
+  color: #475569;
+  padding: 0 11px;
+}
+
+.tab:hover,
+.cat-tab:hover {
+  background: #f8fafc;
+  transform: none;
+}
+
+.tab.active,
+.cat-tab.active {
+  background: var(--blue);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(16, 60, 143, 0.2);
+}
+
+.guide-btn {
+  border: 1px solid #d4e5f2;
+  background: #fff;
+  color: #1a4f8c;
+  padding: 0 11px;
+}
+
+.guide-btn:hover {
+  background: #f0f7ff;
+  transform: none;
+}
+
+.badge {
+  min-height: 20px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* —— 图标按钮 —— */
+.icon-btn,
+.ppt-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  padding: 0;
+  border-radius: var(--btn-radius);
+  border: 1px solid #dce5ee;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.icon-btn:hover,
+.ppt-close-btn:hover {
+  background: #f8fafc;
+  border-color: #b8c9dc;
+  color: #334155;
+  transform: none;
+}
+
+.ppt-close-btn {
+  border-radius: var(--btn-radius-pill);
+  font-size: 18px;
+}
+
+/* —— 小号 / 文字 / 辅助 —— */
+.add-small,
+.task-row-delete,
+.ppt-remove-page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 0 8px;
+  font-size: var(--btn-font-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.add-small {
+  border: 0;
+  background: #f0f7ff;
+  color: #1a4f8c;
+}
+
+.add-small:hover {
+  background: #e3effc;
+}
+
+.task-row-delete {
+  border: 1px solid #f5d0d6;
+  background: #fff;
+  color: #b72c3e;
+}
+
+.task-row-delete:hover {
+  background: #fff5f6;
+}
+
+.ppt-remove-page {
+  border: none;
+  background: transparent;
+  color: #b72c3e;
+  padding: 0 4px;
+  min-height: auto;
+}
+
+.ppt-remove-page:hover {
+  text-decoration: underline;
+}
+
+.default-star {
+  min-height: 26px;
+  padding: 4px 8px;
+  font-size: var(--btn-font-sm);
+  border-radius: 6px;
+  border: 0;
+  background: #f1f5f9;
+  cursor: pointer;
+}
+
+.picker-tab {
+  min-height: var(--btn-h);
+  padding: 0 12px;
+  font-size: var(--btn-font);
+  font-weight: 500;
+  border-radius: var(--btn-radius);
+  border: 1px solid #dce5ee;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.picker-tab.active {
+  background: var(--blue);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 1px 3px rgba(16, 60, 143, 0.2);
+}
+
+.ppt-add-page,
+.ppt-add-chapter {
+  min-height: var(--btn-h);
+  padding: 0 12px;
+  font-size: var(--btn-font);
+  font-weight: 500;
+  border-radius: var(--btn-radius);
+  border: 1px dashed #b8cfe8;
+  background: #f8fbff;
+  color: #1a4f8c;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.ppt-add-page:hover,
+.ppt-add-chapter:hover {
+  background: #eef6ff;
+  border-color: #94b8e8;
+}
+
+/* PPT 底部双按钮：等大并列 */
+.ppt-outline-foot .ppt-generate-actions .ppt-generate-btn,
+.ppt-outline-inline .ppt-generate-actions .ppt-generate-btn {
+  width: 100%;
+  max-width: none;
+  min-height: var(--btn-h-lg);
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  border-radius: var(--btn-radius) !important;
+  letter-spacing: 0.02em;
+  box-sizing: border-box;
+}
+
+.ppt-outline-foot .ppt-generate-actions .ppt-generate-btn-alt,
+.ppt-outline-inline .ppt-generate-actions .ppt-generate-btn-alt {
+  border: none !important;
+  background: linear-gradient(135deg, var(--green2) 0%, var(--green) 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 1px 3px rgba(0, 120, 100, 0.22) !important;
+}
+
+.ppt-outline-foot .ppt-generate-actions .ppt-generate-btn-alt:hover:not(:disabled),
+.ppt-outline-inline .ppt-generate-actions .ppt-generate-btn-alt:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00967d 0%, #5cad24 100%) !important;
+  transform: none;
+}
+
+.ppt-outline-foot .ppt-generate-actions .ppt-generate-btn.primary,
+.ppt-outline-inline .ppt-generate-actions .ppt-generate-btn.primary {
+  border: none !important;
+  background: linear-gradient(135deg, var(--blue) 0%, #1a5fcc 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 1px 3px rgba(16, 60, 143, 0.22) !important;
+}
+
+.ppt-outline-foot .ppt-generate-actions .ppt-generate-btn.primary:hover:not(:disabled),
+.ppt-outline-inline .ppt-generate-actions .ppt-generate-btn.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0d3478 0%, #164fa8 100%) !important;
+  transform: none;
+}
+
+/* 模板卡片（可点击）略收紧 */
+.ppt-template-card {
+  border-width: 1px;
+  border-radius: var(--btn-radius);
+  padding: 8px;
+}
+
+.ppt-template-card strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 弹窗底部按钮组 */
+.confirm-modal-actions .btn,
+.modal-foot .btn,
+.image-template-modal-foot .btn {
+  min-width: 72px;
+}
+
+/* 内联 style 常见的大按钮降级（仅 padding/margin 由 class 控制） */
+.detail-card .btn,
+.quick-row .btn,
+.ops-image-review-actions .btn,
+.ops-image-review-bulk .btn,
+.drawer-editor-toolbar .btn,
+.visual-tools .btn,
+.reviewer-visual-card-foot .btn,
+.ppt-slide-card-meta .btn,
+.team-review-strip .btn,
+.visual-action-strip .btn {
+  min-height: var(--btn-h-sm);
+}
+
+.detail-card .btn.primary,
+.quick-row .btn.primary {
+  min-height: var(--btn-h);
+}
+
+/* PPT 大纲区编号与品牌色对齐 */
+.ppt-chapter-num {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--btn-radius);
+  background: var(--blue);
+}
+
+.ppt-page-num {
+  width: 26px;
+  height: 26px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 6px;
+  background: #eef4ff;
+  color: var(--blue);
+}
+
+.model-select {
+  min-height: var(--btn-h-sm);
+  padding: 0 8px;
+  font-size: var(--btn-font-sm);
+  font-weight: 500;
+  border-radius: var(--btn-radius);
+  border: 1px solid #d4e5f2;
+  background: #f0f7ff;
+  color: #1a4f8c;
+}
